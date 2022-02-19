@@ -32,8 +32,6 @@ You are given a string and you have to find its first word.
     Output: A string.
     Example:
         first_word("Hello world") == "Hello"
-    How it is used: The first word is a command in a command line.
-    Precondition: The text can contain a-z, A-Z and spaces.
 """
 def first_word(text: str) -> str:
     """
@@ -65,4 +63,135 @@ def end_zeros(num: int) -> int:
             countZeros += 1
         index -= 1
     return countZeros
-print(end_zeros(1))
+print(end_zeros(10))
+
+"""
+You should return a given string in reverse order.
+    Input: A string.
+    Output: A string.
+    Example:
+        backward_string('val') == 'lav'
+        backward_string('') == ''
+        backward_string('ohho') == 'ohho'
+        backward_string('123456789') == '987654321'
+"""
+def backward_string(val: str) -> str:
+    # your code here
+    val = str(val)
+    return val[::-1]
+print(backward_string("val"))
+
+"""
+You should write a function that will receive a positive integer and return:
+    "Fizz Buzz" if the number is divisible by 3 and by 5;
+    "Fizz" if the number is divisible by 3;
+    "Buzz" if the number is divisible by 5;
+    The number as a string for other cases.
+    Input: A number as an integer.
+    Output: The answer as a string.
+    Example:
+        checkio(15) == "Fizz Buzz"
+        checkio(6) == "Fizz"
+        checkio(5) == "Buzz"
+        checkio(7) == "7"
+    """
+def checkio(number: int) -> str:
+    # Your code here
+    # It's main function. Don't remove this function
+    # It's using for auto-testing and must return a result for check.
+
+    # replace this for solution
+    number = int(number)
+    if number % 3 == 0 and number % 5 == 0:
+        return "Fizz Buzz"
+    elif number % 3 == 0:
+        return "Fizz"
+    elif number % 5 == 0:
+        return "Buzz"
+    elif number % 7 == 0:
+        return str(number)
+    return str(number)
+print(checkio(15))
+
+"""
+In a given list the first element should become the last one. An empty list or list with only one element should stay the same.
+    Input: List.
+    Output: Iterable.
+    Example:
+        replace_first([1, 2, 3, 4]) == [2, 3, 4, 1]
+        replace_first([1]) == [1]
+"""
+from typing import Iterable
+def replace_first(items: list) -> Iterable:
+    # your code here
+    while True:
+        if len(items) == 0:
+            break
+        else:
+            num = int(items.pop(0))
+            items.append(num)
+            break
+    return items
+print(replace_first([1,2,3,4]))
+
+"""
+You have a number and you need to determine which digit in this number is the biggest.
+    Input: A positive int.
+    Output: An Int (0-9).
+    Example:
+        max_digit(0) == 0
+        max_digit(52) == 5
+        max_digit(634) == 6
+        max_digit(1) == 1
+        max_digit(10000) == 1
+"""
+def max_digit(number: int) -> int:
+    # your code here
+    numberStr = str(number)
+    valueM = numberStr[0]
+    for i in range(len(numberStr)):
+        if int(numberStr[i]) > int(valueM):
+            valueM = numberStr[i]
+    return int(valueM)
+print(max_digit(5279))
+
+"""
+You have a string that consist only of digits. You need to find how many zero digits ("0") are at the beginning of the given string.
+    Input: A string, that consist of digits.
+    Output: An Int.
+    Example:
+        beginning_zeros('100') == 0
+        beginning_zeros('001') == 2
+        beginning_zeros('100100') == 0
+        beginning_zeros('001001') == 2
+        beginning_zeros('012345679') == 1
+        beginning_zeros('0000') == 4
+"""
+def beginning_zeros(number: str) -> int:
+    # your code here
+    countZeros = 0
+    for i in range(len(number)):
+        if number[i] != "0":
+            break
+        elif number[i] == "0":
+            countZeros += 1
+    return int(countZeros)
+print(beginning_zeros("0001000000"))
+
+"""
+You are given an array with positive numbers and a number N. You should find the N-th power of the element in the array with the index N. If N is outside of the array, then return -1. Don't forget that the first element has the index 0.
+    Let's look at a few examples:
+        - array = [1, 2, 3, 4] and N = 2, then the result is 3 2 == 9;
+        - array = [1, 2, 3] and N = 3, but N is outside of the array, so the result is -1.
+    Input: Two arguments. An array as a list of integers and a number as a integer.
+    Output: The result as an integer.
+    Example:
+        index_power([1, 2, 3, 4], 2) == 9
+        index_power([1, 3, 10, 100], 3) == 1000000
+        index_power([0, 1], 0) == 1
+        index_power([1, 2], 3) == -1
+"""
+def index_power(array: list, n: int) -> int:
+    """
+        Find Nth power of the element with index N.
+    """
